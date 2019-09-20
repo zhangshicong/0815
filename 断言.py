@@ -2,7 +2,7 @@ from selenium import webdriver
 from time import sleep
 
 
-driver = webdriver.Firefox()
+driver = webdriver.Chrome(r'D:\Program Files\chromedriver.exe')
 driver.get("https://www.baidu.com")
 
 print('Before search================')
@@ -30,7 +30,7 @@ now_url = driver.current_url
 print(now_url)
 
 # 获取结果数目
-user = driver.find_element_by_class_name('nums').text
+user = driver.find_element_by_class_name('nums_text').text
 print(user)
 
 driver.quit()
