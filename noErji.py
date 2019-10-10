@@ -270,37 +270,62 @@ def main():
         print(clock.show())
         sleep(1)
         clock.run()
-"""
+
 
 from math import sqrt
 
-class Point(object):
-    def __init__(self, x=0, y=0):
-        self.x = x
-        self.y = y
+#导入math包
+import math
+#定义点的函数
+class Point:
+    def __init__(self,x=0,y=0):
+        self.x=x
+        self.y=y
+    def getx(self):
+        return self.x
+    def gety(self):
+        return self.y
+#定义直线函数
+class Getlen:
+    def __init__(self,p1,p2):
+        self.x=p1.getx()-p2.getx()
+        self.y=p1.gety()-p2.gety()
+        #用math.sqrt（）求平方根
+        self.len= math.sqrt((self.x**2)+(self.y**2))
+    #定义得到直线长度的函数
+    def getlen(self):
+        return self.len
 
-    def move_to(self, x1, y1):
-        self.x1 = x1
-        self.y1 = y1
+#设置点p1的坐标为（0,0）
+p1=Point(0,0)
+#设置点p2的坐标为（3,4）
+p2=Point(3,4)
+l=Getlen(p1,p2)
+#获取两点之间直线的长度
+l.getlen()
 
-    def move_by(self, dx, dy):
-        self.dx = dx
-        self.dy = dy
-
-    def way(self):
-        dx = self.x1 - self.x
-        dy = self.y1 - self.y
-        return sqrt(dx**2 + dy**2)
+#跳过了面向对象进阶，以及图形用户界面
 
 def main():
-    p1 = Point(3, 5)
-    p2 = Point()
-    print(p1)
-    print(p2)
-    p2.move_by(-1, 2)
-    print(p2)
-    print(p1.way(p2))
+    f = open(r'F:\公司\2 用户中心\4 版本发布\20190926\新建文本文档.txt', 'r')
+    print(f.read())
+    f.close()
+"""
 
+def main():
+    f = None
+    try:
+        f = open(r'F:\公司\2 用户中心\4 版本发布\20190926\新建文本文档.txt', 'r')
+        print(f.read())
+    except FileNotFoundError:
+        print('无法打开指定的文件!')
+    except LookupError:
+        print('指定了未知的编码!')
+    except UnicodeDecodeError:
+        print('读取文件时解码错误!')
+    finally:
+        if f:
+            f.close()
 
 if __name__ == '__main__':
     main()
